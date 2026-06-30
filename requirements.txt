@@ -1,0 +1,8 @@
+gymnasium
+numpy
+matplotlib
+torch
+torchvision
+Pillow
+scipy
+pandas
