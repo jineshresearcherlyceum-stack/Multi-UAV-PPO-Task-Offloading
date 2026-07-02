@@ -1,0 +1,51 @@
+experiment:
+  num_uavs: 3
+  num_mec_servers: 2
+  max_steps_per_episode: 100
+  episodes_per_seed: 200
+  seeds:
+  - 42
+  - 123
+  - 456
+  - 7
+  - 2024
+environment:
+  area_m: "100\xD7100\xD750 (UAVs) / 100\xD7100\xD710 (MEC)"
+  energy_init_J: 100.0
+  F_max_GHz: 10.0
+  f_det_GHz_when_on: 3.0
+  f_det_GHz_when_off: 0.0
+  deadline_range_rel_units: '[5.0, 9.0] calibrated (greedy Full success ~0.63, No_Det
+    ~0.83)'
+  latency_dist_coeff_MEC: 0.07
+  latency_cpu_coeff_MEC: 0.004
+  latency_cpu_coeff_local: 0.01
+  detection_contention_overhead: 0.30 when detection ON, 0.0 when OFF
+channel_model:
+  carrier_freq_Hz: 2.4e9
+  path_loss_model: "Free-space (20\xB7log10)"
+  fading_model: Rayleigh, scale=1.5  (was 1.0)
+  noise_power_W: 1e-9  (was 1e-10)
+  transmit_power_W: 0.1
+  bandwidth_Hz: 20e6
+ppo_hyperparameters:
+  learning_rate: 0.0003
+  gamma: 0.99
+  clip_epsilon: 0.2
+  entropy_coeff: 0.01
+  max_grad_norm: 0.5
+  value_loss_coeff: 0.5
+  network: "2\xD7256 Linear+ReLU+LayerNorm shared trunk, policy+value heads"
+meta_rl:
+  algorithm: Reptile (first-order MAML approximation)
+  base_optimizer: PPO (same hyperparams as above)
+  meta_step_size: 0.1
+  reptile_update_every: 5
+  adapt_threshold: 0.9
+ablations:
+- Full
+- No_Detection
+- No_Perception_Reward
+smoothing:
+  method: Exponential Moving Average (EMA)
+  span: 20

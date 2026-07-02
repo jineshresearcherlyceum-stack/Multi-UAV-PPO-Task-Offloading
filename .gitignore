@@ -1,8 +1,0 @@
-__pycache__/
-*.pyc
-*.pth
-*.csv
-*.png
-results/
-*.log
-.DS_Store

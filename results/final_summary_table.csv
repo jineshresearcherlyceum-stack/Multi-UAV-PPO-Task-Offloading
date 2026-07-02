@@ -1,0 +1,4 @@
+Method,rewards_mean,rewards_std,success_rate_mean,success_rate_std,latency_mean,latency_std,energy_mean,energy_std,adapt_time_mean,adapt_time_std
+Greedy,4.261,1.099,0.549,0.005,2.096,0.022,4.749,0.041,160.2,79.6
+PPO,-4.266,3.797,0.535,0.021,2.158,0.067,4.815,0.227,54.6,34.0
+Meta-RL,-8.879,2.384,0.533,0.022,2.220,0.066,4.911,0.226,53.2,74.1
